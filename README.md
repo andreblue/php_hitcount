@@ -4,19 +4,19 @@ php_hitcount
 A simple one class php based hit counter. 
 After 7 days it will simply allow another view per ip by a page.
 
-## Requirements
+Requirements
 ============
 You need:
     PHP with PDO Support(5.1+)
     Mysql
 
-## Install
+Install
 ============
 
 Drag the class where you need it and require it as needed. 
 Run the 2 Mysql statements in the included sql_commands.sql file.
 
-## Usage
+Usage
 ============
 
 Include the file into where you wish to use it.
@@ -47,7 +47,7 @@ $Counter->addHit("CrazyPage);
 ```
 This will add a hit to the page you select or by default it will use the suggested name.
 
-## Issues & Requests
+Issues & Requests
 ============
 
 For any issues or requests simply open up a ticket on github.
