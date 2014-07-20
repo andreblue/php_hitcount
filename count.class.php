@@ -103,10 +103,7 @@ class Count {
             $currentCount->execute();
             $found = $currentCount->rowCount();
             if($found > 0){
-                $results = $currentCount->fetch(PDO::FETCH_ASSOC);
-                $count = $results['hitcount'] + 1;
-                $updateCount = $this->db->prepare("UPDATE hits SET hitcount=:count WHERE page=:page");
-                $updateCount->bindParam(":count",$count);
+                $updateCount = $this->db->prepare("UPDATE hits SET hitcount= hitcount + 1 WHERE page=:page");
                 $updateCount->bindParam(":page",$Page);
                 if(!$updateCount->execute()){
                     throw new Exception('Unable to update hits table!');
