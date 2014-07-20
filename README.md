@@ -47,7 +47,17 @@ $Counter->addHit("CrazyPage);
 ```
 This will add a hit to the page you select or by default it will use the suggested name.
 
-Issues & Requests
+```
+$Counter->getUserIP();
+```
+This will try to get the visiting users ip as best as we can. It will return the ip.
+
+```
+$Counter->hasVisited($Page);
+```
+This will try to check if the visiting ip has been here before. It will return the true or false. You simply pass it the page you wish. It will use the getUserIP function to get the up.
+
+Issues & Requests 
 ============
 
 For any issues or requests simply open up a ticket on github.
