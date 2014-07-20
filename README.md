@@ -4,6 +4,17 @@ php_hitcount
 A simple one class php based hit counter. 
 After 7 days it will simply allow another view per ip by a page.
 
+## Requirements
+============
+You need:
+    PHP with PDO Support(5.1+)
+    Mysql
+
+## Install
+============
+Drag the class where you need it and require it as needed. 
+Run the 2 Mysql statements in the included sql_commands.sql file.
+
 
 ## Usage
 ============
