@@ -12,12 +12,13 @@ You need:
 
 ## Install
 ============
+
 Drag the class where you need it and require it as needed. 
 Run the 2 Mysql statements in the included sql_commands.sql file.
 
-
 ## Usage
 ============
+
 Include the file into where you wish to use it.
 
 After you will need simply to create an instance of it to function.
@@ -45,3 +46,8 @@ $Counter->addHit();
 $Counter->addHit("CrazyPage);
 ```
 This will add a hit to the page you select or by default it will use the suggested name.
+
+## Issues & Requests
+============
+
+For any issues or requests simply open up a ticket on github.
