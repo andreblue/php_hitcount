@@ -39,7 +39,7 @@ class Count {
         }
     }
     //Get reffering ip
-    private function getUserIP(){
+    public function getUserIP(){
         $client  = @$_SERVER['HTTP_CLIENT_IP'];
         $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
         $remote  = $_SERVER['REMOTE_ADDR'];
@@ -57,7 +57,7 @@ class Count {
         return $ip;
     }
     //Check if the vistior has been here within the last week.
-    private function hasVisited($Page){
+    public function hasVisited($Page){
         $Ref = $this->getUserIP();
         if(!filter_var($Ref, FILTER_VALIDATE_IP)){
             throw new Exception('Did not get valid ip');
