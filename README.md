@@ -43,7 +43,7 @@ This will return the number of hits per the page you select or by default it wil
 
 ```
 $Counter->addHit();
-$Counter->addHit("CrazyPage);
+$Counter->addHit("CrazyPage");
 ```
 This will add a hit to the page you select or by default it will use the suggested name.
 
@@ -55,7 +55,7 @@ This will try to get the visiting users ip as best as we can. It will return the
 ```
 $Counter->hasVisited($Page);
 ```
-This will try to check if the visiting ip has been here before. It will return the true or false. You simply pass it the page you wish. It will use the getUserIP function to get the up.
+This will try to check if the visiting ip has been here before. It will return the true or false. You simply pass it the page you wish. It will use the getUserIP function to get the ip.
 
 Issues & Requests 
 ============
