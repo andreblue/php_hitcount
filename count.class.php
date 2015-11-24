@@ -1,9 +1,9 @@
-<?
+<?php
 class Count {
     protected $db,
     $htmlpath;
     public $page;
-    function __construct($host,$user,$password,$db,$htmlpath) {
+    function __construct($host,$user,$password,$db,$htmlpath = "") {
         $dsn = 'mysql:dbname='.$db.';host='.$host ;
         try{
             $this->db = new PDO($dsn, $user, $password);
@@ -32,7 +32,7 @@ class Count {
         if ($getHitsQuery = $this->db->prepare("SELECT hitcount FROM hits WHERE page=:page")){
             $getHitsQuery->bindParam(':page', $Page);
             $getHitsQuery->execute();
-            $results = $getHitsQuery->fetch(PDO::FETCH_ASSOC); 
+            $results = $getHitsQuery->fetch(PDO::FETCH_ASSOC);
             return $results['hitcount'];
         }else{
             return false;
@@ -63,14 +63,14 @@ class Count {
             throw new Exception('Did not get valid ip');
             return;
         }
-        if ($getVisted = $this->db->prepare("SELECT time_visted FROM history WHERE ip=:ip AND page=:page")){
+        if ($getVisted = $this->db->prepare("SELECT time_visited FROM history WHERE ip=:ip AND page=:page")){
             $getVisted->bindParam(':ip', $Ref);
             $getVisted->bindParam(':page', $Page);
             $getVisted->execute();
             $results = $getVisted->fetch(PDO::FETCH_ASSOC);
             $hits = $getVisted->rowCount();
             if($hits > 0){
-                $stored = new DateTime($results['time_visted'] );
+                $stored = new DateTime($results['time_visited'] );
                 $current = new DateTime();
                 $diff = $current->diff($stored);
                 $diff = abs($diff->format('%R%a'));
@@ -109,7 +109,7 @@ class Count {
                     throw new Exception('Unable to update hits table!');
                 }
                 //Update history table to prevent someone from refreshing the page
-                $addIPHistory = $this->db->prepare("INSERT INTO history (time_visted, ip, page) VALUES (:time, :ip, :page)");
+                $addIPHistory = $this->db->prepare("INSERT INTO history (time_visited, ip, page) VALUES (:time, :ip, :page)");
                 $addIPHistory->bindParam(":page",$Page);
 				$IPaddr = $this->getUserIP();
                 $addIPHistory->bindParam(":ip",$IPaddr);
@@ -119,11 +119,11 @@ class Count {
                 if(!$addIPHistory->execute()){
                     throw new Exception('Unable to update history table!');
                 }
-                
+
             }else{
-                
+
                 //Update history table to prevent someone from refreshing the page
-                $addIPHistory = $this->db->prepare("INSERT INTO history (time_visted, ip, page) VALUES (:time, :ip, :page)");
+                $addIPHistory = $this->db->prepare("INSERT INTO history (time_visited, ip, page) VALUES (:time, :ip, :page)");
                 $addIPHistory->bindParam(":page",$Page);
                 $addIPHistory->bindParam(":ip",$this->getUserIP());
                 $time = new DateTime();
@@ -138,11 +138,11 @@ class Count {
                 if(!$createPageRow->execute()){
                     throw new Exception('Unable to insert new page into hits table!');
                 }
-                
+
             }
-            
+
         }
     }
-    
-    
+
+
 }

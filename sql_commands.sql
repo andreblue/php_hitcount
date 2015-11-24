@@ -1,6 +1,6 @@
 --The history table.
 CREATE TABLE IF NOT EXISTS `history` (
-  `time_visted` text COLLATE latin1_general_ci NOT NULL,
+  `time_visited` text COLLATE latin1_general_ci NOT NULL,
   `ip` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `page` varchar(255) COLLATE latin1_general_ci NOT NULL,
